@@ -10,6 +10,7 @@
         content="Thrillchaser brings you unforgettable adventures, thrilling destinations, and travel experiences designed for explorers." />
 
     <link rel="stylesheet" href="scroll-animations.css">
+    <link rel="stylesheet" href="style.css">
     <script src="scroll-animations.js"></script>
 
     <!-- Google Font -->
@@ -19,360 +20,37 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-
-    <style>
-        :root {
-            --primary: #9b1c1c;
-            --dark: #1f2933;
-            --light: #f8fafc;
-            --gray: #6b7280;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navbar */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Logo */
-        .logo {
-            width: 200px;
-            height: 48px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Nav links */
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.8rem;
-        }
-
-        .nav-links a {
-            position: relative;
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.3rem 0;
-            transition: color 0.3s ease;
-        }
-
-        /* Animated underline */
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(rgba(155, 28, 28, 0.85), rgba(0, 0, 0, 0.65)),
-                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        /* ===== HERO SWIPER ===== */
-
-        .hero {
-            position: relative;
-            overflow: visible;
-            color: white;
-            height: 60vh;
-        }
-
-        .hero-swiper {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-
-        .hero-slide {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Hero Content Overlay */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: auto;
-            padding: 6rem 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 60vh;
-            }
-        }
-
-
-        .hero-content {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            max-width: 600px;
-            color: #f3f4f6;
-            margin: 1rem 0 2rem;
-        }
-
-        .hero-buttons a {
-            display: inline-block;
-            margin-right: 1rem;
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-        }
-
-        .btn-outline {
-            border: 2px solid white;
-            color: white;
-        }
-
-        section {
-            padding: 4rem 1.5rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 650px;
-            margin: auto;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-        }
-
-        .feature-card p {
-            color: var(--gray);
-        }
-
-        /* Destinations */
-        .destinations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .destination-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: rgb(255, 255, 255);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-            cursor: pointer;
-        }
-
-        .destination-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .destination-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.45s ease;
-        }
-
-        .destination-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .destination-card div {
-            padding: 1rem;
-        }
-
-        /* Adventures (same feel as destinations) */
-        .adventures {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .adventure-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-            cursor: pointer;
-        }
-
-        .adventure-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .adventure-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.45s ease;
-        }
-
-        .adventure-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .adventure-card div {
-            padding: 1rem;
-        }
-
-
-        /* CTA */
-        .cta {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 4rem 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: #cbd5f5;
-            padding: 2rem 1.5rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
-
-        footer a {
-            color: #cbd5f5;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <script src="scroll-animations.js"></script>
     <!-- Navbar -->
     <header>
-        <div class="nav">
+        <nav class="nav">
             <div class="logo">
-                <img src="logo.png" alt="Thrillchaser Logo">
-            </div>
-            <div class="nav-links">
-                <a href="./constructionpage.html">Home</a>
-                <a href="./constructionpage.html">Destinations</a>
-                <a href="./constructionpage.html">Experiences</a>
-                <a href="./constructionpage.html">Contact</a>
+                <img src="logo.png" alt="Logo">
             </div>
 
-        </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="#">Destinations</a>
+                <a href="#">Adventures</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
     </header>
+
+    <!-- Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+
+
 
     <!-- Hero -->
     <!-- Hero Swiper -->
@@ -601,6 +279,21 @@
         });
     </script>
 
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        const navOverlay = document.getElementById("navOverlay");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.add("active");
+            navOverlay.classList.add("active");
+        });
+
+        navOverlay.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            navOverlay.classList.remove("active");
+        });
+    </script>
 
 </body>
 
