@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Thrillchaser | Coming Soon</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #9b1c1c;
+      --dark: #1f2933;
+      --light: #f8fafc;
+      --gray: #6b7280;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(
+        rgba(155,28,28,0.9),
+        rgba(0,0,0,0.75)
+      ),
+      url("./thrill_background.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card img {
+      height: 60px;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: #e5e7eb;
+      font-size: 1rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.15);
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    @media (max-width: 480px) {
+      .card h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <!-- Optional logo -->
+    <!-- <img src="logo.png" alt="Thrillchaser Logo"> -->
+
+    <span class="tag">We’re building something exciting ✨</span>
+
+    <h1>Website in the Making</h1>
+
+    <p>
+      This part of Thrillchaser is currently under preparation.
+      We’re carefully crafting an experience that’s worth the wait.
+    </p>
+
+    <p>
+      Very soon, you’ll be able to explore destinations, adventures,
+      and travel experiences designed for true thrill-seekers.
+    </p>
+
+    <a href="./thrillchaser.html" class="btn">Back to Home</a>
+
+    <div class="footer-note">
+      © Thrillchaser — Adventure is coming soon
+    </div>
+  </div>
+
+</body>
+</html>

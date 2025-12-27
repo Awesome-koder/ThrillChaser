@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Thrillchaser | Adventure Awaits</title>
+    <meta name="description"
+        content="Thrillchaser brings you unforgettable adventures, thrilling destinations, and travel experiences designed for explorers." />
+
+    <link rel="stylesheet" href="scroll-animations.css">
+    <script src="scroll-animations.js"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <style>
+        :root {
+            --primary: #9b1c1c;
+            --dark: #1f2933;
+            --light: #f8fafc;
+            --gray: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            width: 200px;
+            height: 48px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Nav links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            position: relative;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Animated underline */
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(155, 28, 28, 0.85), rgba(0, 0, 0, 0.65)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        /* ===== HERO SWIPER ===== */
+
+        .hero {
+            position: relative;
+            overflow: visible;
+            color: white;
+            height: 60vh;
+        }
+
+        .hero-swiper {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Hero Content Overlay */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: auto;
+            padding: 6rem 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+        }
+
+
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #f3f4f6;
+            margin: 1rem 0 2rem;
+        }
+
+        .hero-buttons a {
+            display: inline-block;
+            margin-right: 1rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        section {
+            padding: 4rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        /* Destinations */
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgb(255, 255, 255);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .destination-card div {
+            padding: 1rem;
+        }
+
+        /* Adventures (same feel as destinations) */
+        .adventures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .adventure-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: pointer;
+        }
+
+        .adventure-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .adventure-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .adventure-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .adventure-card div {
+            padding: 1rem;
+        }
+
+
+        /* CTA */
+        .cta {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #cbd5f5;
+            padding: 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        footer a {
+            color: #cbd5f5;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="scroll-animations.js"></script>
+    <!-- Navbar -->
+    <header>
+        <div class="nav">
+            <div class="logo">
+                <img src="logo.png" alt="Thrillchaser Logo">
+            </div>
+            <div class="nav-links">
+                <a href="./constructionpage.html">Home</a>
+                <a href="./constructionpage.html">Destinations</a>
+                <a href="./constructionpage.html">Experiences</a>
+                <a href="./constructionpage.html">Contact</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <!-- Hero Swiper -->
+    <section class="hero">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1 -->
+                <div class="swiper-slide hero-slide" style="background-image: linear-gradient(rgba(155,28,28,0.85), rgba(0,0,0,0.65)),
+               url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide hero-slide" style="background-image: linear-gradient(rgba(155,28,28,0.85), rgba(0,0,0,0.65)),
+               url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');">
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide hero-slide" style="background-image: linear-gradient(rgba(155,28,28,0.85), rgba(0,0,0,0.65)),
+               url('https://images.unsplash.com/photo-1548013146-72479768bada');">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Chase the Thrill. Explore the World.</h1>
+            <p>
+                Thrillchaser is built for those who seek adventure, breathtaking destinations,
+                and experiences that stay with you forever.
+            </p>
+            <div class="hero-buttons">
+                <a href="./constructionpage.html" class="btn-primary">Explore Adventures</a>
+                <a href="#" class="btn-outline">Launching Soon</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Thrillchaser?</h2>
+                <p>
+                    Because travel should feel exciting, effortless, and unforgettable --
+                    from planning to the final moment of your journey.
+                </p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card reveal-item">
+                    <h3>Curated Adventures</h3>
+                    <p>
+                        Every destination and experience is thoughtfully selected
+                        to deliver real excitement and lasting memories.
+                    </p>
+                </div>
+                <div class="feature-card reveal-item">
+                    <h3>Smooth Planning</h3>
+                    <p>
+                        Simple, clear, and stress-free planning so you can focus
+                        on enjoying the adventure ahead.
+                    </p>
+                </div>
+                <div class="feature-card reveal-item">
+                    <h3>Trusted Experiences</h3>
+                    <p>
+                        Carefully designed journeys backed by attention to detail,
+                        safety, and comfort.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="reveal" style="background:#f1f5f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>
+                    A glimpse of the adventures awaiting you -- with many more
+                    exciting destinations coming soon.
+                </p>
+            </div>
+
+            <div class="destinations">
+                <div class="destination-card reveal-item">
+                    <img src="./goa.jpg">
+                    <div>
+                        <h4>Goa</h4>
+                        <p>Beaches • Energy • Freedom</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="./manali.jpg">
+                    <div>
+                        <h4>Manali</h4>
+                        <p>Mountains • Snow • Adventure</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="./rajasthan.jpg">
+                    <div>
+                        <h4>Rajasthan</h4>
+                        <p>Culture • Heritage • Stories</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Adventures -->
+    <section style="background:#ffffff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Adventures</h2>
+                <p>
+                    Experiences that get your heart racing -- crafted for thrill seekers
+                    and adventure lovers.
+                </p>
+            </div>
+
+            <div class="adventures">
+                <div class="adventure-card reveal-item">
+                    <img src="./bungee.jpg" alt="Bungee Jumping">
+                    <div>
+                        <h4>Bungee Jumping</h4>
+                        <p>Free fall • Adrenaline • Ultimate thrill</p>
+                    </div>
+                </div>
+
+                <div class="adventure-card reveal-item">
+                    <img src="./Rafting.jpg" alt="River Rafting">
+                    <div>
+                        <h4>River Rafting</h4>
+                        <p>Rapids • Team spirit • Adventure</p>
+                    </div>
+                </div>
+
+                <div class="adventure-card reveal-item">
+                    <img src="./jetski.jpg" alt="Jet Ski">
+                    <div>
+                        <h4>Jet Ski</h4>
+                        <p>Speed • Waves • Freedom</p>
+                    </div>
+                </div>
+
+                <div class="adventure-card reveal-item">
+                    <img src="./Camping.jpg" alt="Camping">
+                    <div>
+                        <h4>Camping</h4>
+                        <p>Nature • Bonfire • Calm nights</p>
+                    </div>
+                </div>
+
+                <div class="adventure-card reveal-item">
+                    <img src="./paragliding.jpg" alt="Paragliding">
+                    <div>
+                        <h4>Paragliding</h4>
+                        <p>Sky views • Wind • Freedom</p>
+                    </div>
+                </div>
+
+                <div class="adventure-card reveal-item">
+                    <img src="./Trekking.jpg" alt="Trekking">
+                    <div>
+                        <h4>Trekking</h4>
+                        <p>Trails • Mountains • Exploration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta reveal">
+        <h2>Your Next Adventure Begins Soon</h2>
+        <p>
+            Thrillchaser is preparing something special -- a complete travel
+            experience designed for true explorers.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="reveal">
+        <div class="footer-content">
+            <div>
+                <h3>Thrillchaser</h3>
+                <p>Adventure Awaits</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="./constructionpage.html">Experiences</a>
+                <a href="./constructionpage.html">Destinations</a>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <p>Email: info@thrillchaser.com</p>
+                <p>Phone: +91 74775 44911</p>
+                <br>
+            </div>
+        </div>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const heroSwiper = new Swiper(".hero-swiper", {
+            loop: true,
+            speed: 1200,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true,
+            },
+        });
+    </script>
+
+
+</body>
+
+</html>
