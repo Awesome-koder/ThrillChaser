@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="scroll-animations.css">
     <link rel="stylesheet" href="style.css">
-    <script src="scroll-animations.js"></script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -23,7 +22,6 @@
 </head>
 
 <body>
-    <script src="scroll-animations.js"></script>
     <!-- Navbar -->
     <header>
         <nav class="nav">
@@ -38,10 +36,10 @@
             </div>
 
             <div class="nav-links" id="navLinks">
-                <a href="#">Home</a>
-                <a href="#">Destinations</a>
-                <a href="#">Adventures</a>
-                <a href="#">Contact</a>
+                <a href="./constructionpage.html">Home</a>
+                <a href="./constructionpage.html">Destinations</a>
+                <a href="./constructionpage.html">Adventures</a>
+                <a href="./constructionpage.html">Contact</a>
             </div>
         </nav>
     </header>
@@ -74,18 +72,18 @@
                 </div>
 
             </div>
-        </div>
 
-        <!-- Hero Content -->
-        <div class="hero-content">
-            <h1>Chase the Thrill. Explore the World.</h1>
-            <p>
-                Thrillchaser is built for those who seek adventure, breathtaking destinations,
-                and experiences that stay with you forever.
-            </p>
-            <div class="hero-buttons">
-                <a href="./constructionpage.html" class="btn-primary">Explore Adventures</a>
-                <a href="#" class="btn-outline">Launching Soon</a>
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <h1>Chase the Thrill. Explore the World.</h1>
+                <p>
+                    Thrillchaser is built for those who seek adventure, breathtaking destinations,
+                    and experiences that stay with you forever.
+                </p>
+                <div class="hero-buttons">
+                    <a href="./constructionpage.html" class="btn-primary">Explore Adventures</a>
+                    <a href="#" class="btn-outline">Launching Soon</a>
+                </div>
             </div>
         </div>
     </section>
@@ -261,7 +259,9 @@
             </div>
         </div>
     </footer>
+
     <!-- Swiper JS -->
+    <script src="scroll-animations.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -280,18 +280,32 @@
     </script>
 
     <script>
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.getElementById("navLinks");
-        const navOverlay = document.getElementById("navOverlay");
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const overlay = document.querySelector(".nav-overlay");
 
         hamburger.addEventListener("click", () => {
-            navLinks.classList.add("active");
-            navOverlay.classList.add("active");
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+            overlay.classList.toggle("active");
+            document.body.style.overflow =
+                navLinks.classList.contains("active") ? "hidden" : "";
         });
 
-        navOverlay.addEventListener("click", () => {
+        overlay.addEventListener("click", () => {
+            hamburger.classList.remove("active");
             navLinks.classList.remove("active");
-            navOverlay.classList.remove("active");
+            overlay.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navLinks.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.style.overflow = "";
+            });
         });
     </script>
 
